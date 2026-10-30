@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --surface-2: #f3efe9;
+  --border: #e6e0d7;
+  --text: #1f1b16;
+  --muted: #6f665b;
+  --accent: #e5582b;
+  --accent-strong: #c8461d;
+  --accent-soft: #fde8df;
+  --on-accent: #ffffff;
+  --good: #2f7d4f;
+  --good-soft: #e1f2e7;
+  --warn: #a86400;
+  --warn-soft: #fbefd9;
+  --bad: #b3261e;
+  --bad-soft: #fbe2df;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15120f;
+    --surface: #1e1a16;
+    --surface-2: #29231d;
+    --border: #3a322a;
+    --text: #f3ede6;
+    --muted: #b0a597;
+    --accent: #ff7a4d;
+    --accent-strong: #ff946f;
+    --accent-soft: #3d2219;
+    --on-accent: #1a0f0a;
+    --good: #6cc895;
+    --good-soft: #1b3326;
+    --warn: #f0b860;
+    --warn-soft: #3a2b12;
+    --bad: #f28b82;
+    --bad-soft: #3e1d1a;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+@utility card {
+  @apply rounded-2xl border border-border bg-surface p-4;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-on-accent hover:bg-accent-strong;
+}
+@utility btn-ghost {
+  @apply btn border border-border bg-surface text-text hover:bg-surface-2;
+}
+@utility input {
+  @apply w-full rounded-xl border border-border bg-surface px-3 py-2.5 text-sm text-text outline-none placeholder:text-muted focus:border-accent;
+}
+@utility chip {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-sm text-text transition-colors hover:bg-surface-2;
+  &[data-on="true"] {
+    @apply border-accent bg-accent-soft text-accent-strong;
+  }
+}
+@utility label {
+  @apply mb-1.5 block text-sm font-medium text-muted;
+}
